@@ -1,0 +1,9 @@
+mongodb://localhost:27017
+
+
+    username: rohan974
+    password: n3vM9zbcP6L2AQif
+
+
+CRUD OPERATION  
+    -> 
