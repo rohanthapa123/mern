@@ -28,6 +28,7 @@ const auth = async (req, res, next) => {
       } else {
         let data = jwt.verify(token, Config.JWT_SECRET);
         let auth_user = await user_svc.getUserById(data.user_id)
+        console.log("the user logged in is :")
         console.log(auth_user)
         if(auth_user){
             req.auth_user = auth_user;

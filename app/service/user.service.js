@@ -31,9 +31,9 @@ class UserService{
         
     }
 
-    createUser = async (data) =>{
+    createUser = async () =>{
         try{
-            let user_obj = new userModel(data);
+            let user_obj = new userModel(this.data);
             return await user_obj.save();
             //return await this.db.collection('users').insertOne(data)
         }catch(excp){
@@ -53,7 +53,7 @@ class UserService{
                 email: data.email
             });
             return result;
-            console.log(result);
+            // console.log(result);
             
         }catch(err){
             console.log(err)

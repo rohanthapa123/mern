@@ -18,6 +18,7 @@ const LabelSchemaDef = new mongoose.Schema(
       enum: ["brand", "banner"],
       default: "banner",
     },
+    created_by :commonSchema.created_by
   },
   commonSchema.trigger
 );

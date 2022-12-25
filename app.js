@@ -3,9 +3,9 @@ const app = express();
 require("./config/mongoose.config")
 const port = 3005;
 const route = require('./routes/')
-
 // app.use()
 
+app.use("/assets",express.static('/public/images/'))
 app.set('view engine', 'pug');
 app.set('views',process.cwd()+'/views')
 
