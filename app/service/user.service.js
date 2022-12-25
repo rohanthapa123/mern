@@ -22,7 +22,7 @@ class UserService{
             if(response.error){
                 throw response.error.details[0].message
             }
-            console.log(response)
+            // console.log(response)
         }catch(err){
             console.log(err)
             throw err;

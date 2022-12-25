@@ -1,5 +1,4 @@
-const express = require('express')
-const app_router = express.Router();
+const app_router = require('express').Router();
 const auth_login = require('./auth-login');
 const contact_route = require('./contact.route')
 const product_route = require('./product.route')

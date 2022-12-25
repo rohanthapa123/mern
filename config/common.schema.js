@@ -1,4 +1,3 @@
-const { string } = require('joi');
 const mongoose = require('mongoose');
 const NepalData = require('../config/nepal-data')
 const AddressSchemaDef = new mongoose.Schema({

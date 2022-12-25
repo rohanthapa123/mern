@@ -12,6 +12,6 @@ const validateType = (req,res,next)=>{
         next({status:404, msg: 'Resource not found'})
     }
 }
-router.post("/:type",validateType,auth,isAdmin,uploader.single(''),label_ctrl.labelStore)
+router.post("/:type",validateType,auth,isAdmin,uploader.single('image'),label_ctrl.labelStore)
 
 module.exports = router;
