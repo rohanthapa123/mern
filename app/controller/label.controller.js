@@ -21,10 +21,10 @@ class LabelController{
                 });
             }
             // console.log(data)
-            let abc =this.label_svc.storeValidate(data);
+            this.label_svc.storeValidate(data);
             // console.log(abc)
             // console.log("hello")
-            let response = await this.label_svc.createLabel(abc);
+            let response = await this.label_svc.createLabel();
             res.json({
                 result: response,
                 msg: data.type + "Created successfully",
@@ -90,6 +90,41 @@ class LabelController{
             console.log("Fetch by Id: ",excep)
             next({status:400,msg: excep})
         }
+    }
+    categoryUpdate = async (req,res,next) =>{
+        try{
+            let current_data = await this.label_svc.findById(req.params.type,req.params.id)
+            let data = req.body;
+            if(req.file){
+                data.image = req.file.filename;
+            }
+            // console.log(data)
+            data.type = req.params.type;
+            if(!data.link || data.link == 'null' ){
+                if(data.type === "banner"){
+                    data.link = slugify(data.title,{
+                        lower: true
+                    });
+                }else{
+                    data.link = current_data.link
+                }
+                
+            }
+            // console.log(data)
+            this.label_svc.storeValidate(data);
+            // console.log(abc)
+            // console.log("hello")
+            let response = await this.label_svc.updateLabel(req.params.id);
+            res.json({
+                result: response,
+                msg: data.type + "updated successfully",
+                status: true
+            })
+        }catch(excep){
+            console.log("label store: ", excep)
+            next({status:400, msg: excep})
+        }
+
     }
 }
 module.exports = LabelController;

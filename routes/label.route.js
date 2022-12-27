@@ -12,8 +12,11 @@ const validateType = (req,res,next)=>{
         next({status:404, msg: 'Resource not found'})
     }
 }
-router.get("/:type",validateType,label_ctrl.getLabel)
-router.post("/:type",validateType,auth,isAdmin,uploader.single('image'),label_ctrl.labelStore)
-router.get("/:type/:id",validateType,label_ctrl.getLabelById);
-router.delete("/:type/:id",validateType,auth,isAdmin,label_ctrl.deleteById);
+router.route("/:type")
+    .get(validateType,label_ctrl.getLabel)
+    .post(validateType,auth,isAdmin,uploader.single('image'),label_ctrl.labelStore)
+router.route("/:type/:id")
+    .get(validateType,label_ctrl.getLabelById)
+    .delete(validateType,auth,isAdmin,label_ctrl.deleteById)
+    .put(validateType,auth,isAdmin,uploader.single("image"),label_ctrl.categoryUpdate)
 module.exports = router;

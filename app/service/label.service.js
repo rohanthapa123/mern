@@ -16,12 +16,13 @@ class LabelService{
             throw response.error.details[0].message;
         }else{
             // console.log(data)
-            return data;
+            this.data = data;
+            // return data;
         }
     }
-    createLabel = async (datas)=>{
+    createLabel = async ()=>{
         // console.log(datas)
-        let label_obj = new labelModel(datas);
+        let label_obj = new labelModel(this.data);
         return await label_obj.save();
 
     }
@@ -51,6 +52,12 @@ class LabelService{
             _id: id
         }
         return await labelModel.deleteOne(filter);
+    }
+    updateLabel = async (id) =>{
+        let status = await labelModel.findByIdAndUpdate(id,{
+            $set : this.data
+        });
+        return status;
     }
 }
 module.exports = LabelService;
