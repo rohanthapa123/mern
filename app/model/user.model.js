@@ -1,6 +1,6 @@
 const { string } = require('joi');
 const mongoose = require('mongoose');
-const commonSchema = require('../../config/common.schema');
+const commonSchema = require('./common.schema');
 
 
 

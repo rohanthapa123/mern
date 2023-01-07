@@ -59,6 +59,5 @@ class LabelService{
         });
         return status;
     }
-    
 }
 module.exports = LabelService;

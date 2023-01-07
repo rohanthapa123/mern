@@ -4,6 +4,7 @@ const uploader = require('..//app/middleware/uploader.middleware')
 const { isAdmin } = require('../app/middleware/rbac.middleware');
 const LabelController = require('../app/controller/label.controller')
 const label_ctrl = new LabelController();
+
 const validateType = (req,res,next)=>{
     if(req.params.type === 'brand' || req.params.type === 'banner'){
         next();

@@ -4,6 +4,7 @@ const contact_route = require('./contact.route')
 const product_route = require('./product.route')
 const register_route = require('./register.route')
 const label_route = require('./label.route')
+const category_route = require('./category.route')
 
 
 app_router.get('/home',(req,res,next)=>{
@@ -11,8 +12,9 @@ app_router.get('/home',(req,res,next)=>{
 })
 app_router.use('/',auth_login);
 app_router.use('/contact',contact_route);
-app_router.use('/product/',product_route);
+app_router.use('/product',product_route);
 app_router.use(register_route)
+app_router.use('/category',category_route)
 app_router.use('/',label_route)
 
 module.exports = app_router;
