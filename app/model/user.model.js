@@ -1,4 +1,4 @@
-const { string } = require('joi');
+
 const mongoose = require('mongoose');
 const commonSchema = require('./common.schema');
 

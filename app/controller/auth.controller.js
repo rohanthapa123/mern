@@ -17,6 +17,7 @@ class AuthController {
             body.image = req.file.filename;
         }
         try{
+            // console.log(body)
             //data mapping 2 2way delete one by one or assign to object
             this.user_svc.validateUser(body);
             //DB store
