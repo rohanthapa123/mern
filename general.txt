@@ -7,3 +7,27 @@ mongodb://localhost:27017
 
 CRUD OPERATION  
     -> 
+
+
+
+
+
+standard Division
+    default/extra small => <576 => -
+    small  => > 567 => -sm
+    medium => >= 768px =>-md
+    large => >=992px =>-lg
+    extra large => >= 1200px =>-xl
+    extra extra large => >=1400px =>-xxl
+
+
+Every row has a 12 eaual cols
+col-1 to col-12
+-> 
+    sm => body => 540px => 100% width
+    col-sm-1 to col-sm-12
+    -> col-sm-1 => 100%/12 => 8.86% width
+    -> col-sm-2 => (100%/12)*2 => 17.% width
+    ....
+    => col-sm-6 => 50%
+    => col-sm-12 => 100%
