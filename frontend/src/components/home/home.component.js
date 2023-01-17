@@ -4,6 +4,7 @@ import logo from "../../assets/images/Xiaomi-Logo-2014.png";
 import {FaMapMarked, FaPhoneAlt} from "react-icons/fa"
 import "../../assets/css/global.css"
 import { NavLink } from 'react-router-dom';
+import "./footer-layout.css"
 export const NavBar = (props) => {
   return (
     <>
@@ -36,5 +37,26 @@ export const NavBar = (props) => {
         </Container>
       </Navbar>
       </>
+  )
+}
+export const Footerlayout = () =>{
+  return (
+    <>
+    <footer className="bg-dark footer-position" >
+        <Container fluid className="text-white">
+          <Row>
+            <Col sm={12} lg={4}>
+              First Col
+            </Col>
+            <Col sm={12} lg={4}>
+              Second Col
+            </Col>
+            <Col sm={12} lg={4}>
+              Third Col
+            </Col>
+          </Row>
+        </Container>
+      </footer>
+    </>
   )
 }

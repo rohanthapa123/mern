@@ -13,6 +13,7 @@ import cat1 from "../../assets/images/cat1.jpg";
 import { NavBar } from "../../components/home/home.component";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Footerlayout } from "../../components/home/home.component";
 const HomePage = () => {
   //   let [banner, setBanner] = useState()
   //   let [loading, setLoading] = useState(false)
@@ -63,7 +64,6 @@ const HomePage = () => {
 
   return (
     <>
-      <NavBar opt1="login" opt2="register" opt3="MyAccount" link1="/login" link2="/register" link3="/customer" />
       {
         loading ? "Loading..." :
 
@@ -289,21 +289,6 @@ const HomePage = () => {
         </Container>
       </div>
       {/* Product End */}
-      <footer className="bg-dark">
-        <Container fluid className="text-white">
-          <Row>
-            <Col sm={12} lg={4}>
-              First Col
-            </Col>
-            <Col sm={12} lg={4}>
-              Second Col
-            </Col>
-            <Col sm={12} lg={4}>
-              Third Col
-            </Col>
-          </Row>
-        </Container>
-      </footer>
     </>
   );
 };

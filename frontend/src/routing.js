@@ -1,26 +1,35 @@
 import {BrowserRouter, Outlet, Route, Routes, useParams} from 'react-router-dom'
 import ErrorPage from './pages/common/error.page'
-import LoginForm from './pages/home/form/login.page'
+import LoginForm from './pages/home/auth/form/login.page'
 import HomePage from './pages/home/home.page'
 import CategoryDetail from './pages/home/category/category-detail.page'
-import RegisterFrom from './pages/home/register_form/register.form'
-
+import RegisterFrom from './pages/home/auth/register_form/register.form'
 import CustomerLayout from './pages/layouts/customerLayout/customer.layout'
 import AdminLayout from './pages/layouts/adminLayout/admin.layout'
 import AdminDashboard from './pages/admin/dashboard/admin-dashboard.page'
+import AdminAccessControl from './components/access--control/access-controll'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+import HomePageLayout from './pages/layouts/homePageLayout/homePageLayout'
 const Routing = () =>{
     let id = useParams()
     return (
         <>
+            <ToastContainer>
+
+            </ToastContainer>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/login" element= {<LoginForm/>}/>
-                    <Route path="/register" element={<RegisterFrom/>}/>
-                    {/* <Route path="/category" element={<RegisterFrom/>}/> */}
-                    <Route path="/category/:id" element={<CategoryDetail/>}/>
+                    <Route path="/" element={<HomePageLayout/>}>
+                        <Route index element={<HomePage/>}/>
+                        <Route path="login" element= {<LoginForm/>}/>
+                        <Route path="register" element={<RegisterFrom/>}/>
+                        {/* <Route path="/category" element={<RegisterFrom/>}/> */}
+                        <Route path="category/:id" element={<CategoryDetail/>}/>
+                    </Route>
                     
-                    <Route path="/admin/" element={<AdminLayout/>}>
+
+                    <Route path="/admin/" element={<AdminAccessControl Component={<AdminLayout/>}/>}>
                         <Route index element={<AdminDashboard/>}/>
                         <Route path= "user" element={<>User Outlet<Outlet/></>}>
                             <Route index element={<>List all user</>}/>
@@ -30,6 +39,7 @@ const Routing = () =>{
 
                         </Route>
                     </Route>
+
 
                     //customer 
                     <Route>

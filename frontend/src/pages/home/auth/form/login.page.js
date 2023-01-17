@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import { NavBar } from "../../../components/home/home.component";
 const LoginForm = () => {
   let [data, setData] = useState({
     email: null,
@@ -27,15 +26,21 @@ const LoginForm = () => {
       token:"jwttoken"
     }}
     //localStorage || Cookie
+    localStorage.setItem("_mern15_user",JSON.stringify(user_detail.result.user))
+    localStorage.setItem("_mern15_user_token",(user_detail.result.token))
     //if success = ?? dashboard/admin,/customer, /seller
-    localStorage.setItem("_mern15_user",JSON.stringify(user_detail))
     navigate("/"+user_detail.result.user.role)
   
   }
+  useEffect(()=>{
+    let token = localStorage.getItem('_mern15_user_token')
+    let user = JSON.parse(localStorage.getItem('_mern15_user'));
+    if(token){
+      navigate("/"+user.role)
+    }
+  },[])
   return (
     <>
-      <NavBar opt1="login" opt2="register" link1="/login" link2="/register" />
-
       <hr className="col-sm-6 offset-sm-3" />
       <Container>
         <Row>
