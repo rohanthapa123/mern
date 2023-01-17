@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import HomePage from './pages/home/home.page';
-
 import "bootstrap/dist/css/bootstrap.min.css"
+import "@fortawesome/fontawesome-free/css/all.min.css"
 import reportWebVitals from './reportWebVitals';
-
+import "./assets/css/global.css"
+import Routing from './routing';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HomePage name="Rohan Thapa" address="Kathmandu"/>
+    <Routing/>
   </React.StrictMode>
 );
 
