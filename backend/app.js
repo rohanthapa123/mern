@@ -1,8 +1,9 @@
+
 const express = require('express');
+const cors = require('cors')
 const app = express();
 require("./config/mongoose.config")
-
-
+app.use(cors())
 const events = require('events')
 
 const myevent = new events.EventEmitter();

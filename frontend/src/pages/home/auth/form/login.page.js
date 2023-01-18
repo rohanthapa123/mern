@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { auth_svc } from "../../../../services/auth.service";
+
 const LoginForm = () => {
   let [data, setData] = useState({
     email: null,
@@ -16,20 +19,26 @@ const LoginForm = () => {
      
     
   }
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    console.log("Data: ",data)
+  const handleSubmit = async (e) =>{
+    try {
+      e.preventDefault();
+      let user = await auth_svc.login(data)
+      navigate("/"+user.role)
+    } catch (excep) {
+      console.log("Axios ",excep.response)
+    }
+    
     //api integraiton
     
-    let user_detail = {result:{
-      user:{ _id:234 ,name:"",email:"" , role: "admin"},
-      token:"jwttoken"
-    }}
-    //localStorage || Cookie
-    localStorage.setItem("_mern15_user",JSON.stringify(user_detail.result.user))
-    localStorage.setItem("_mern15_user_token",(user_detail.result.token))
-    //if success = ?? dashboard/admin,/customer, /seller
-    navigate("/"+user_detail.result.user.role)
+  //   let user_detail = {result:{
+  //     user:{ _id:234 ,name:"",email:"" , role: "admin"},
+  //     token:"jwttoken"
+  //   }}
+  //   //localStorage || Cookie
+  //   localStorage.setItem("_mern15_user",JSON.stringify(user_detail.result.user))
+  //   localStorage.setItem("_mern15_user_token",(user_detail.result.token))
+  //   //if success = ?? dashboard/admin,/customer, /seller
+  //   navigate("/"+user_detail.result.user.role)
   
   }
   useEffect(()=>{
